@@ -10,7 +10,12 @@ package codigo;
  * @author juli
  */
 public class VentanaCalculadora extends javax.swing.JFrame {
-
+    
+    double operando1 = 0 ;
+    
+   String operacion = "";
+   
+    
     /**
      * Creates new form VentanaCalculadora
      */
@@ -24,6 +29,12 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         {pantalla.setText(numero);}
         
         else {pantalla.setText(pantalla.getText()+ numero);}
+    }
+    
+      private void operacionPulsada(String _operacion){
+          operacion = _operacion;
+          operando1 = Double.valueOf(pantalla.getText());
+          pantalla.setText("0");
     }
     
     /**
@@ -173,11 +184,6 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         boton02.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 boton02MousePressed(evt);
-            }
-        });
-        boton02.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton02ActionPerformed(evt);
             }
         });
 
@@ -330,44 +336,54 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_boton05MousePressed
 
     private void botonmenosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonmenosMousePressed
-        numeroPulsado("-");
+        operacionPulsada("-");
     }//GEN-LAST:event_botonmenosMousePressed
 
     private void botonmasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonmasMousePressed
-        numeroPulsado("+");
+        operacionPulsada("+");
     }//GEN-LAST:event_botonmasMousePressed
 
     private void botonmultiplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonmultiplicarMousePressed
-        numeroPulsado("*");
+        operacionPulsada("*");
     }//GEN-LAST:event_botonmultiplicarMousePressed
 
     private void boton03MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton03MousePressed
-        // TODO add your handling code here:
+        numeroPulsado("3");
     }//GEN-LAST:event_boton03MousePressed
 
     private void boton02MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton02MousePressed
-        // TODO add your handling code here:
+        numeroPulsado("2");
     }//GEN-LAST:event_boton02MousePressed
 
     private void boton01MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton01MousePressed
-        // TODO add your handling code here:
+        numeroPulsado("1");
     }//GEN-LAST:event_boton01MousePressed
 
     private void boton0MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton0MousePressed
-        // TODO add your handling code here:
+        numeroPulsado("0");
     }//GEN-LAST:event_boton0MousePressed
 
     private void botondividirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botondividirMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botondividirMousePressed
+        operacionPulsada("/");
+                                         }//GEN-LAST:event_botondividirMousePressed
 
     private void botonigualMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonigualMousePressed
-        // TODO add your handling code here:
+        double operando2 = Double.valueOf(pantalla.getText());
+        
+        if (operacion.equals("+"))
+        {operando1 = operando1 + operando2 ;}
+        
+          if (operacion.equals("/"))
+        {operando1 = operando1 / operando2 ;}
+          
+          if (operacion.equals("*"))
+        {operando1 = operando1 * operando2 ;}
+          
+          if (operacion.equals("-"))
+        {operando1 = operando1 - operando2 ;}
+        
+        pantalla.setText(String.valueOf(operando1) );
     }//GEN-LAST:event_botonigualMousePressed
-
-    private void boton02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton02ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton02ActionPerformed
 
     /**
      * @param args the command line arguments
